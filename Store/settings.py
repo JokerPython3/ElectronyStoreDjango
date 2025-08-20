@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-h^%sam+@xn6aosna()2y$52$0-qo628re2tx)1bch3z6amqmxb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -121,16 +121,15 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'  
 LOGIN_REDIRECT_URL = '/'
 
-# إضافة هذه الإعدادات
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
