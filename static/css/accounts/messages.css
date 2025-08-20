@@ -1,0 +1,28 @@
+.messages {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    max-width: 300px;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    color: #fff;
+    animation: slideIn 0.3s ease-out;
+}
+
+.alert-success {
+    background-color: #0f9d58;
+}
+
+.alert-error {
+    background-color: #dc3545;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}

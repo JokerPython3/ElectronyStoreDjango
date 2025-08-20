@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تسجيل الدخول</title>
+    <link rel="stylesheet" href="{% static 'css/accounts/login.css' %}">
+</head>
+<body>
+    <form method="post">
+        <h2>تسجيل الدخول</h2>
+        {% include 'accounts/includes/messages.html' %}
+        {% csrf_token %}
+        <div class="form-group">
+            <label>اسم المستخدم</label>
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            <label>كلمة المرور</label>
+            {{ form.password }}
+        </div>
+        <button type="submit">دخول</button>
+        <a href="{% url 'register' %}">ليس لديك حساب؟ سجل الآن</a>
+    </form>
+</body>
+</html>

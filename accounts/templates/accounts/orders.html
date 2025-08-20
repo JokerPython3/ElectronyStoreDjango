@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>الطلبات</title>
+    <link rel="stylesheet" href="{% static 'css/accounts/register.css' %}">
+    <style>
+        body { background: linear-gradient(135deg,#e3f0ff,#f7fafc); }
+        .orders-box {
+            background: #fff;
+            padding: 32px 24px;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(30,144,255,0.10);
+            max-width: 600px;
+            margin: 40px auto;
+        }
+        .orders-title { color: #1da1f2; text-align: center; margin-bottom: 18px; }
+        .orders-list { list-style:none;padding:0;margin:0;}
+        .orders-list li {margin-bottom:18px;border-bottom:1px solid #eee;padding-bottom:10px;}
+        .order-products {margin-top:8px;}
+        .order-products li {font-size:15px;}
+        .empty {color:#888;text-align:center;}
+    </style>
+</head>
+<body>
+    <div class="orders-box">
+        <h2 class="orders-title">الطلبات</h2>
+        {% if orders %}
+            <ul class="orders-list">
+                {% for order in orders %}
+                <li>
+                    <div>رقم الطلب: <b>{{ order.id }}</b></div>
+                    <div>الإجمالي: <span style="color:#0f9d58">{{ order.total }} د.ع</span></div>
+                    <div>الحالة: {{ order.status }}</div>
+                    <div>تاريخ: {{ order.created|date:"Y-m-d H:i" }}</div>
+                    <div class="order-products">
+                        المنتجات:
+                        <ul>
+                            {% for item in order.items.all %}
+                                <li>{{ item.product.name }} × {{ item.quantity }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="empty">لا توجد طلبات حتى الآن.</div>
+        {% endif %}
+        <a href="{% url 'home' %}" style="display:block;margin-top:24px;text-align:center;color:#1da1f2;">العودة للمنتجات</a>
+    </div>
+</body>
+</html>
